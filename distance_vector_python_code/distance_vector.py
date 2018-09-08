@@ -30,7 +30,7 @@ class Rtpkt:
     def __init__(self, srcid, destid, mincosts):
         self.sourceid = srcid
         self.destid = destid
-        self.mincosts = mincosts
+        self.mincosts = mincosts[:4]
 
 '''
 ***************** NETWORK EMULATION CODE STARTS BELOW ***********
@@ -78,13 +78,13 @@ def main():
     while evlist:
         event = evlist.pop(0)
         if TRACE > 1:
-            print("MAIN: rcv event, t=%.3f, at %d", event.evtime,event.eventity)
+            print("MAIN: rcv event, t=%.3f, at %d" % (event.evtime, event.eventity))
             if event.evtype == FROM_LAYER2:
-                print(" src:%2d,", event.rtpktptr.sourceid)
-                print(" dest:%2d,", event.rtpktptr.destid)
-                print(" contents: %3d %3d %3d %3d\n",
-                    event.rtpktptr.mincost[0], event.rtpktptr.mincost[1],
-                    event.rtpktptr.mincost[2], event.rtpktptr.mincost[3])
+                print(" src:%2d," % event.rtpktptr.sourceid)
+                print(" dest:%2d," % event.rtpktptr.destid)
+                print(" contents: %3d %3d %3d %3d\n" %
+                      (event.rtpktptr.mincost[0], event.rtpktptr.mincost[1],
+                       event.rtpktptr.mincost[2], event.rtpktptr.mincost[3]))
         clocktime = event.evtime;    # update time to next event time
 
         if event.evtype == FROM_LAYER2:
@@ -115,14 +115,14 @@ def main():
         del event                     # free memory for event struct
 
 
-    print("\nSimulator terminated at t=%f, no packets in medium\n", clocktime);
+    print("\nSimulator terminated at t=%f, no packets in medium\n" % clocktime);
 
 
 # initialize the simulator
 def init():
-    int i
-    float sum, avg
-    struct event *evptr;
+    #int i
+    #float sum, avg
+    #struct event *evptr;
 
     TRACE = int(input("Enter TRACE:"))
 
@@ -140,7 +140,7 @@ def init():
                       eventity=-1,
                       rtpktptr=None)
         insertevent(event)
-        evptr = Event(evtime=20000.0,
+        event = Event(evtime=20000.0,
                       evtype=LINK_CHANGE,
                       rtpktptr=None)
         insertevent(event)
@@ -152,9 +152,10 @@ def init():
 '''
 def insertevent(p):
     # struct event *p;
+    # struct event *q,*qold;
     if TRACE > 3:
-        print("            INSERTEVENT: time is %lf\n", clocktime)
-        print("            INSERTEVENT: future time will be %lf\n", p.evtime)
+        print("            INSERTEVENT: time is %lf\n" % clocktime)
+        print("            INSERTEVENT: future time will be %lf\n" % p.evtime)
 
     evlist.append(p)
     evlist.sort(key=lambda e: e.evtime, reverse=True)
@@ -162,7 +163,7 @@ def insertevent(p):
 def printevlist():
     print("--------------\nEvent List Follows:\n")
     for event in evlist:
-        print("Event time: %f, type: %d entity: %d\n", event.evtime, event.evtype, event.eventity)
+        print("Event time: %f, type: %d entity: %d\n" % (event.evtime, event.evtype, event.eventity))
     print("--------------\n")
 
 
@@ -198,10 +199,10 @@ def tolayer2(packet):
     # to do something with the packet after we return back to him/her
     mypktptr = copy.deepcopy(packet)
     if TRACE > 2:
-        print("    TOLAYER2: source: %d, dest: %d\n              costs:",
-              mypktptr.sourceid, mypktptr.destid)
+        print("    TOLAYER2: source: %d, dest: %d\n              costs:" %
+              (mypktptr.sourceid, mypktptr.destid))
         for i in range(4):
-            print("%d  ", mypktptr.mincost[i])
+            print("%d  " % (mypktptr.mincost[i]))
         print("\n")
 
     # create future event for arrival of packet at the other side
