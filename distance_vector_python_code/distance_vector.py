@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-'''
-Programming assignment 3: implementing distributed, asynchronous,
-                          distance vector routing.
 
-THIS IS THE MAIN ROUTINE.  IT SHOULD NOT BE TOUCHED AT ALL BY STUDENTS!
-'''
+# Programming assignment 3: implementing distributed, asynchronous,
+#                           distance vector routing.
+#
+# THIS IS THE MAIN ROUTINE.  IT SHOULD NOT BE TOUCHED AT ALL BY STUDENTS!
+
 import random
 import copy
 from node0 import rtinit0, rtupdate0, linkhandler0
@@ -32,21 +32,20 @@ class Rtpkt:
         self.destid = destid
         self.mincosts = mincosts[:4]
 
-'''
-***************** NETWORK EMULATION CODE STARTS BELOW ***********
-The code below emulates the layer 2 and below network environment:
-  - emulates the tranmission and delivery (with no loss and no
-    corruption) between two physically connected nodes
-  - calls the initializations routines rtinit0, etc., once before
-    beginning emulation
 
-THERE IS NOT REASON THAT ANY STUDENT SHOULD HAVE TO READ OR UNDERSTAND
-THE CODE BELOW.  YOU SHOLD NOT TOUCH, OR REFERENCE (in your code) ANY
-OF THE DATA STRUCTURES BELOW.  If you're interested in how I designed
-the emulator, you're welcome to look at the code - but again, you should have
-to, and you defeinitely should not have to modify
-******************************************************************
-'''
+# ***************** NETWORK EMULATION CODE STARTS BELOW ***********
+# The code below emulates the layer 2 and below network environment:
+#   - emulates the tranmission and delivery (with no loss and no
+#     corruption) between two physically connected nodes
+#   - calls the initializations routines rtinit0, etc., once before
+#     beginning emulation
+#
+# THERE IS NOT REASON THAT ANY STUDENT SHOULD HAVE TO READ OR UNDERSTAND
+# THE CODE BELOW.  YOU SHOLD NOT TOUCH, OR REFERENCE (in your code) ANY
+# OF THE DATA STRUCTURES BELOW.  If you're interested in how I designed
+# the emulator, you're welcome to look at the code - but again, you should have
+# to, and you defeinitely should not have to modify
+# ******************************************************************
 
 class Event:
     #evtime           # event time
