@@ -1,4 +1,4 @@
-from distance_vector import Rtpkt, TRACE, YES, NO
+#from distance_vector import Rtpkt, TRACE, YES, NO
 
 
 class DistanceTable:
@@ -31,5 +31,5 @@ def linkhandler1(linkid, newcost):
     You can leave this routine empty if you're an undergrad. If you want
     to use this routine, you'll need to change the value of the LINKCHANGE
     constant definition in prog3.c from 0 to 1
-    ''' 
+    '''
     pass

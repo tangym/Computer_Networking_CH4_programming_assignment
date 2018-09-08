@@ -1,4 +1,4 @@
-from distance_vector import Rtpkt, TRACE, YES, NO
+#from distance_vector import Rtpkt, TRACE, YES, NO
 
 
 class DistanceTable:
@@ -19,7 +19,7 @@ def printdt2(dtptr):
   print("                via     \n")
   print("   D2 |    0     1    3 \n")
   print("  ----|-----------------\n")
-  print("     0|  %3d   %3d   %3d\n", 
+  print("     0|  %3d   %3d   %3d\n",
         dtptr.costs[0][0], dtptr.costs[0][1], dtptr.costs[0][3])
   print("dest 1|  %3d   %3d   %3d\n",
         dtptr.costs[1][0], dtptr.costs[1][1], dtptr.costs[1][3])
