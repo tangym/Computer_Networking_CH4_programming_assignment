@@ -1,4 +1,4 @@
-#from distance_vector import Rtpkt, TRACE, YES, NO
+from utils import TRACE, YES, NO, Rtpkt
 
 
 class DistanceTable:
