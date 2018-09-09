@@ -21,9 +21,9 @@ def printdt1(dtptr):
     print("             via   \n")
     print("   D1 |    0     2 \n")
     print("  ----|-----------\n")
-    print("     0|  %3d   %3d\n", dtptr.costs[0][0], dtptr.costs[0][2])
-    print("dest 2|  %3d   %3d\n", dtptr.costs[2][0], dtptr.costs[2][2])
-    print("     3|  %3d   %3d\n", dtptr.costs[3][0], dtptr.costs[3][2])
+    print("     0|  %3d   %3d\n" % (dtptr.costs[0][0], dtptr.costs[0][2]))
+    print("dest 2|  %3d   %3d\n" % (dtptr.costs[2][0], dtptr.costs[2][2]))
+    print("     3|  %3d   %3d\n" % (dtptr.costs[3][0], dtptr.costs[3][2]))
 
 
 def linkhandler1(linkid, newcost):
