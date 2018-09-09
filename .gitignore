@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# ignore my answer
+distance_vector_python_code/answer/
