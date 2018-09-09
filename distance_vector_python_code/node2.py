@@ -1,10 +1,10 @@
-from utils import TRACE, YES, NO, Rtpkt
+from utils import TRACE, YES, NO, Rtpkt, tolayer2
 
 
 class DistanceTable:
     costs = [[0 for j in range(4)] for i in range(4)]
 
-dt2 = DistanceTable()
+dt = DistanceTable()
 
 # students to write the following two routines, and maybe some others
 
