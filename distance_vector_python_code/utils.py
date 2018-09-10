@@ -67,7 +67,7 @@ def insertevent(p):
         print("            INSERTEVENT: future time will be %lf\n" % p.evtime)
 
     evlist.append(p)
-    evlist.sort(key=lambda e: e.evtime, reverse=True)
+    evlist.sort(key=lambda e: e.evtime)
 
 def printevlist():
     print("--------------\nEvent List Follows:\n")
