@@ -24,6 +24,12 @@ class Rtpkt:
         self.destid = destid
         self.mincost = mincost[:4]
 
+    def __repr__(self):
+        return ('Packet Object:\n'
+                '  Source ID: %s\n'
+                '  Destination ID: %s\n'
+                '  Cost: %s\n' % (self.sourceid, self.destid, self.mincost))
+
 class Event:
     #evtime           # event time
     #evtype             # event type code
@@ -35,6 +41,14 @@ class Event:
         self.evtype = evtype
         self.eventity = eventity
         self.rtpktptr = rtpktptr
+
+    def __repr__(self):
+        return ('Event Object:\n'
+                '  Time: %s\n'
+                '  Type: %s\n'
+                '  Entity: %s\n'
+                '  Packet: %s\n' % (self.evtime, self.evtype,
+                                    self.eventity, self.rtpktptr))
 
 # possible events:
 FROM_LAYER2 = 2
